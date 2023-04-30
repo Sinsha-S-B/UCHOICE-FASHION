@@ -1,0 +1,451 @@
+{{>adminHeader}}
+
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
+
+<section class="bg-light pt-4" style="width: 100%; height: 90vh; ">
+
+  <div class="container px-3">
+    <div class="row gx-4">
+      <div class="col-md-3 ">
+        <div class="p-3  bg-white  dash-top-div d-flex" style="height: 100px; width: 100%;">
+          <div class="icon-dash  d-flex align-items-center justify-content-center fs-3 text-white icon-dash"
+            style="width: 30%;height: 100%; background-color: #57b05b;">
+            <i class="fa-solid fa-shop"></i>
+          </div>
+          <div class="ps-2">
+            <h5>Revenue</h5>
+            <h5 class="">₹<span id="count1">{{totalRevenue}}</span></h5>
+          </div>
+
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="p-3  bg-white  dash-top-div d-flex" style="height: 100px;">
+          <div class="icon-dash  d-flex align-items-center justify-content-center fs-3 text-white icon-dash"
+            style="width: 30%;height: 100%; background-color: #318aec;">
+            <i class="fa-solid fa-users"></i>
+          </div>
+          <div class="ps-2">
+            <h5>Users</h5>
+            <h4 id="count2" class="">{{userCount}}</h4>
+
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="p-3  bg-white  dash-top-div   d-flex" style="height: 100px;">
+          <div class="icon-dash  d-flex align-items-center justify-content-center fs-3 text-white icon-dash"
+            style="width: 30%;height: 100%; background-color: #e93a75;">
+            <i class="fa-solid fa-truck-fast"></i>
+          </div>
+          <div class="ps-2">
+            <h5>Orders</h5>
+            <h4 id="count3" class="">{{deliveryCount}}</h4>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="p-3  bg-white  dash-top-div  d-flex" style="height: 100px;">
+          <div class="icon-dash bg-danger  d-flex align-items-center justify-content-center fs-3 text-white icon-dash"
+            style="width: 30%;height: 100%; background-color:;">
+            <i class="fa-solid fa-trash"></i>
+          </div>
+          <div class="ps-2">
+            <h5>Blocked Users</h5>
+            <h4 id="count4" class="">{{blockeduserCount}}</h4>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-12 mb-4 mt-1">
+                        {{!-- <div class="d-flex flex-wrap justify-content-between align-items-center">
+                            <h4 class="font-weight-bold">Overview</h4>
+                            <div class="form-group mb-0 vanila-daterangepicker d-flex flex-row">
+                               
+                            </div>
+                        </div> --}}
+                    </div>
+                    <div class="col-lg-8 col-md-12">
+                        <div class="row">
+ 
+
+                            {{!-- <div class="col-md-4">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div class="d-flex align-items-center">
+                                            <div class="">
+                                                <p class="mb-2 text-secondary">Total Profit</p>
+                                                <div class="d-flex flex-wrap justify-content-start align-items-center">
+                                                    <h5 class="mb-0 font-weight-bold">{{totalrevenue}}</h5>
+                                                    <p class="mb-0 ml-3 text-success font-weight-bold">+3.55%</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div> --}}
+                            {{!-- <div class="col-md-4">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div class="d-flex align-items-center">
+                                            <div class="">
+                                                <p class="mb-2 text-secondary">Total Sales</p>
+                                                <div class="d-flex flex-wrap justify-content-start align-items-center">
+                                                    <h5 class="mb-0 font-weight-bold">{{ordercount}}</h5>
+                                                    <p class="mb-0 ml-3 text-success font-weight-bold">+2.67%</p>
+                                                </div>
+                                            </div> 
+                                        </div>
+                                    </div>
+                                </div>
+                            </div> --}}
+                            {{!-- <div class="col-md-4">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div class="d-flex align-items-center">
+                                            <div class="">
+                                                <p class="mb-2 text-secondary">Users</p>
+                                                <div class="d-flex flex-wrap justify-content-start align-items-center">
+                                                    <h5 class="mb-0 font-weight-bold">{{usercount}}</h5>
+                                                    <p class="mb-0 ml-3 text-danger font-weight-bold">+6.37%</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div> --}}
+                            <div class="col-md-12">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div class="d-flex justify-content-between align-items-center flex-wrap">
+                                            <h4 class="font-weight-bold">Sales Report</h4>
+                                            <div class="d-flex justify-content-between align-items-center">
+                                                <div><svg width="24" height="24" viewBox="0 0 24 24" fill="primary"
+                                                        xmlns="http://www.w3.org/2000/svg">
+                                                        <rect x="3" y="3" width="18" height="18" rx="2"
+                                                            fill="#3378FF" />
+                                                    </svg>
+                                                    <span>Incomes</span>
+                                                </div>
+                                                <div class="ml-3"><svg width="24" height="24" viewBox="0 0 24 24"
+                                                        fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                        <rect x="3" y="3" width="18" height="18" rx="2"
+                                                            fill="#19b3b3" />
+                                                    </svg>
+                                                    <span>Expenses</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <canvas id="myChart"></canvas>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <script>
+                        const ctx = document.getElementById('myChart').getContext('2d');
+                        const myChart = new Chart(ctx, {
+                            type: 'bar',
+                            data: {
+                                labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July','Aug','Sep','Oct','Nov','Dec'],
+                                datasets: [{
+                                    label: 'Sales',
+                                    data: [12, 19, 3, {{totalRevenue}}, 20, 3, 1,0,0,0,0,0],
+                                    backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                                    borderColor: 'rgba(54, 162, 235, 1)',
+                                    borderWidth: 1
+                                }]
+                            },
+                            options: {
+                                scales: {
+                                    yAxes: [{
+                                        ticks: {
+                                            beginAtZero: true
+                                        }
+                                    }]
+                                }
+                            }
+                        });
+
+                    </script>
+                   
+                    <div class="col-lg-4 col-md-6 ">
+                
+                                {{!-- <div class="card">
+                                    <div class="card-body">
+                                        <div class="d-flex align-items-center">
+                                            <div class="">
+                                                <p class="mb-2 text-secondary">Blocked User</p>
+                                                <div class="d-flex flex-wrap justify-content-start align-items-center">
+                                                    <h5 class="mb-0 font-weight-bold">{{blockeduser}}</h5><br>
+                                                    <p class="mb-0 ml-3 text-danger font-weight-bold">banned customers</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div> --}}
+                          
+
+                        <div class="card">
+                            
+                            <div class="card-body">
+                                <h4 class="font-weight-bold mb-3">Order Details</h4>
+                                {{!-- <div id="chart-apex-column-03" class="custom-chart"></div> --}}
+                                     <canvas id="piChart"></canvas>
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <script>
+                // Get the canvas element
+                var ctx1 = document.getElementById("piChart").getContext("2d");
+
+                // Define the data for the chart
+                var data = {
+                    labels: ["Pending Order", "Delivered Order"],
+                    datasets: [
+                        {
+                            data: [{{pendingCount}}, {{ordercount}}],
+                            backgroundColor: ["#FF6384", "#FFCE56"],
+                        },
+                    ],
+                };
+
+                // Create the pie chart
+                var myPieChart = new Chart(ctx1, {
+                    type: "pie",
+                    data: data,
+                });
+            </script>
+        </div>
+
+
+
+    {{!-- <div class="row mt-4 gx-1  d-flex justify-content-center">
+
+      <div class="col-lg-4  bg-lg-white pt-4 dash-py pe-5" style="max-width: 80vw;">
+        <div class="container " style="max-width: 80vw;">
+          <div class="chart-container  " style="max-width: 80vw;">
+            <canvas class="px-sm-4 pe-3 px-lg-0" id="myChart" style="max-width: 80vw;"></canvas>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-8 ps-4 mt-lg-3 mt-5">
+        <div class=" dash-py ">
+          <div id="chartContainer">
+            <canvas id="piChart"></canvas>
+          </div>
+        </div>
+      </div>
+ --}}
+
+
+      <script>
+        // Get the canvas element
+        var ctx1 = document.getElementById("piChart").getContext("2d");
+
+        // Define the data for the chart
+        var data = {
+          labels: ["Pending Order", "Delivered Order"],
+          datasets: [
+            {
+              data: [{{ pendingordercount }}, {{ ordercount }}],
+          backgroundColor: ["#FF6384", "#FFCE56"],
+                        },
+                    ],
+                };
+
+        // Create the pie chart
+        var myPieChart = new Chart(ctx1, {
+          type: "pie",
+          data: data,
+        });
+      </script>
+      <script>
+        const ctx = document.getElementById('myChart').getContext('2d');
+        const myChart = new Chart(ctx, {
+          type: 'bar',
+          data: {
+            labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+            datasets: [{
+              label: 'Sales',
+              data: [12, 19, 3, {{ totalrevenue }}, 20, 3, 1, 0, 0, 0, 0, 0],
+            backgroundColor: 'rgba(54, 162, 235, 0.2)',
+            borderColor: 'rgba(54, 162, 235, 1)',
+            borderWidth: 1
+          }]
+        },
+          options: {
+          scales: {
+            yAxes: [{
+              ticks: {
+                beginAtZero: true
+              }
+            }]
+          }
+        }
+                        });
+
+      </script>
+
+
+
+      {{!-- <style>
+        #chartContainer {
+          width: 100%;
+          height: auto;
+        }
+
+        #barGraph {
+          width: 100%;
+          height: 100%;
+        }
+      </style>
+
+      <script>
+        // Data
+
+        $.ajax({
+          url: '/admin/getChart-data',
+          method: 'GET',
+          success: (reve) => {
+            console.log(reve)
+            let Data = []
+            let Month = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
+            reve.forEach(value => {
+
+              Data.push({ 'label': Month[value._id - 1], 'value': value.revenue })
+            })
+            let rev = parseInt(document.getElementById('count1').innerHTML)
+
+            const barData = Data;
+
+            // Chart creation
+            const chartCanvas = document.getElementById('barGraph');
+
+            new Chart(chartCanvas, {
+              type: 'bar',
+              data: {
+                labels: barData.map(data => data.label),
+                datasets: [{
+                  label: 'Revenue',
+                  data: barData.map(data => data.value),
+                  backgroundColor: '#57b05b'
+                }]
+              },
+              options: {
+                scales: {
+                  yAxes: [{
+                    ticks: {
+                      beginAtZero: true
+                    }
+                  }]
+                }
+              }
+            });
+          }
+
+        })
+
+
+
+      </script>
+
+
+    </div>
+  </div>
+
+</section>
+
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    function counter(id, start, end, duration) {
+      let obj = document.getElementById(id),
+        current = start,
+        range = end - start,
+        increment = end > start ? 1 : -1,
+        step = Math.abs(Math.floor(duration / range)),
+        timer = setInterval(() => {
+          current += increment;
+          obj.textContent = current;
+          if (current == end) {
+            clearInterval(timer);
+          }
+        }, step);
+    }
+    let rev = parseInt(document.getElementById('count1').innerHTML)
+    let user = parseInt(document.getElementById('count2').innerHTML)
+    let ord = parseInt(document.getElementById('count3').innerHTML)
+    let canc = parseInt(document.getElementById('count4').innerHTML)
+    counter("count1", rev - 400, rev, 1);
+
+    if (user > 0) {
+      counter("count2", 0, user, 2500);
+    }
+    if (ord > 0) {
+      counter("count3", 0, ord, 1000);
+    }
+
+    if (canc > 0) {
+      counter("count4", 0, canc, 1000);
+    }
+
+  });
+
+
+  // Data for the chart
+  let canc = parseInt(document.getElementById('count4').innerHTML)
+  let ord = parseInt(document.getElementById('count3').innerHTML) - canc
+
+  var data = {
+    labels: ["Cancelled Orders", "Successful Orders"],
+    datasets: [{
+      data: [canc, ord],
+      backgroundColor: ["#dc3545", "#36A2EB", "#FFCE56"]
+    }]
+  };
+
+  // Options for the chart
+  var options = {
+    responsive: true,
+    maintainAspectRatio: false,
+    legend: {
+      position: 'bottom',
+      labels: {
+        fontColor: 'black',
+        fontSize: 16
+      }
+    }
+  };
+
+  // Get the canvas element
+  var ctx = document.getElementById("myChart").getContext("2d");
+
+  // Create the chart
+  var myPieChart = new Chart(ctx, {
+    type: 'pie',
+    data: data,
+    options: options
+  });
+
+</script>
+
+
+
+
+
+--}}
+
+{{>adminFooter}}

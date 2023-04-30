@@ -1,0 +1,108 @@
+{{>adminHeader}}
+
+<section class="container-fluid p-5">
+
+  <form action="/admin/couponAdd" method="post">
+    <div class="row ">
+      <div class="col-md">
+        <label for="">Coupon Code</label>
+        <div class="form-floating">
+          <input type="text" class="form-control" name="couponCode" id="floatingInputGrid" value="">
+        </div>
+      </div>
+      <div class="col-md">
+        <label>Discount Value</label>
+        <div class="form-floating">
+          <input type="number" class="form-control" name="discountPrice" id="floatingInputGrid" value="">
+
+
+        </div>
+      </div>
+    </div>
+    <div class="row ">
+      <div class="col-md">
+        <label for="">Create Date</label>
+        <div class="form-floating">
+          <input type="date" class="form-control" name="createDate" id="floatingInputGrid" value="">
+        </div>
+      </div>
+      <div class="col-md">
+        <label>Enter Minimum Purchase </label>
+        <div class="form-floating">
+          <input type="number" class="form-control" name="MinimumPrice" id="floatingInputGrid" value="">
+
+
+        </div>
+      </div>
+    </div>
+    <div class="row ">
+      <div class="col-md">
+        <label for="">Expire Date</label>
+        <div class="form-floating">
+          <input type="date" class="form-control" name="expireDate" id="floatingInputGrid" value="">
+        </div>
+      </div>
+      <div class="col-md">
+        <label for="">Discount Type</label>
+        <div class="form-floating">
+          <input type="text" class="form-control" name="discountType" id="floatingInputGrid" value="">
+        </div>
+      </div>
+    </div>
+
+
+    <br>
+
+    <button type="submit" class="btn btn-dark ">Add Coupon</button>
+    <p class="text-danger">{{couponerr}}</p>
+  </form>
+</section>
+
+
+
+
+<section>
+
+
+
+  <div class="p-5">
+
+    <table class="table mt-5">
+
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">Sl.No</th>
+          <th scope="col">Coupon Code</th>
+          <th scope="col">Discount Type</th>
+          <th scope="col">Discount Price</th>
+          <th scope="col">Min Purchase</th>
+          <th scope="col">Create Date</th>
+          <th scope="col">Expire Date</th>
+          <th scope="col">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#each couponData options="{data: {startIndex: 1}}" }}
+        <tr>
+          <td>{{incIndex @index}}</td>
+          <td>{{couponCode}}</td>
+          <td>{{discountType}}</td>
+          <td>{{discountPrice}}</td>
+          {{!-- <td>{{subcategory}}</td> --}}
+          <td>{{MinimumPrice}}</td>
+          <td>{{createDate}}</td>
+          <td>{{expireDate}}</td>
+
+
+          <td><a class="btn btn-dark" onclick="return confirm('Are you sure you want to edit {{title}}?')"
+              href="/admin/editCoupon/{{_id}}">Edit</a></td>
+
+
+        </tr>
+        {{/each}}
+      </tbody>
+    </table>
+  </div>
+</section>
+
+{{>adminFooter}}

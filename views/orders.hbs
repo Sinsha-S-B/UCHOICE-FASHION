@@ -1,0 +1,56 @@
+{{>userHeader}}
+<br><br><br><br>
+<div class="p-5 container">
+		<table class="table mt-5">
+			<thead class="thead-dark">
+				<tr>
+                    <th scope="col">Sl.No</th>
+					<th scope="col">Date</th>
+					<th scope="col">Address</th>
+					<th scope="col">Pin Code</th>
+					<th scope="col">Mobile</th>
+					<th scope="col">Amount</th>
+					<th scope="col">Payment</th>
+					<th scope="col">Status</th>
+					<th scope="col"> </th>
+					<th scope="col"> Action</th>
+				</tr>
+			</thead>
+			<tbody>
+	
+				{{#each orders}}
+				<tr>
+					<td>{{incIndex @index}}</td>
+					<td>{{date}}</td>
+					<td>{{deliveryDetails.Address}}</td>
+					<td>{{deliveryDetails.Postcode}}</td>
+					<td>{{deliveryDetails.Mobilenumber}}</td>
+					<td>{{totalAmount}}</td>
+					<td>{{paymentMethod}}</td>
+					<td>{{status}}</td>
+					<td><a class="btn btn-dark" style="float: right;"  href="/viewOrderProducts/{{_id}}">View Orders</a></td>
+
+					{{#if (eq status "cancelled" )}}
+					<td><h6 style="color: rgb(255, 0, 0);" >Order Cancelled</h6></td>
+					{{else}}
+					<td><a class="btn btn-danger" href="/orderscancel/{{_id}}" onclick="return confirm('Are you sure you want to cancel the order?')">Cancel</a>
+			        {{/if}}
+				</tr>
+				{{/each}}
+			</tbody>
+		</table>
+	</div>
+     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+	integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+		crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
+		integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
+		crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
+		integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
+		crossorigin="anonymous"></script>
+</body>
+{{>userFooter}}
+

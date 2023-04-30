@@ -1,0 +1,69 @@
+{{>adminHeader}}
+<div class="p-5 container">
+    <table class="table " id="sales-report">
+        <thead class="thead-dark">
+                <a class="btn btn-dark ms-3" href="/admin/salesReports/?name=day" role="button" style="width: 5rem;">Daily</a>
+                <a class="btn btn-dark ms-3" href="/admin/salesReports/?name=month" role="button" style="width: 5rem;">Monthly</a>
+                <a class="btn btn-dark ms-3" href="/admin/salesReports/?name=lifetime" role="button" style="width: 5rem;">Yearly</a><br>
+                <a class="btn btn-dark ms-3 float-end" style="width: 5rem;"  role="button" onclick="ExportToExcel()">Export</a>
+            <br>
+            <tr>
+                <th scope="col">Sl.No</th>
+                <th scope="col">Date</th>
+                <th scope="col">Ordered User</th>
+                <th scope="col">Quantity</th>
+                <th scope="col">Price</th>
+                <th scope="col">Total Price</th>
+                <th scope="col">Product Id</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each salesdatas}}
+            <tr>
+                <td>{{incIndex @index}}</td>
+                <td>{{salesDate}}</td>
+                <td>{{orderedUser}}</td>
+                <td>{{products.quantity}}</td>
+                <td>{{products.product.price}}</td>
+                <td>{{totalAmount}}</td>
+                
+                <td>{{products.item}}</td>
+                {{!-- <td><a class="btn btn-dark" style="float: right;" href="/admin/orderedProducts/{{_id}}">View --}}
+                        {{!-- Orders</a></td> --}}
+
+            
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+</div>
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+    crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
+    integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
+    crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
+    integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
+    crossorigin="anonymous"></script>
+</body>
+<script type="text/javascript" src="https://unpkg.com/xlsx@0.15.1/dist/xlsx.full.min.js"></script>
+
+<script>
+    function ExportToExcel(type, fn, dl) {
+    var elt = document.getElementById("sales-report");
+    var wb = XLSX.utils.table_to_book(elt, { sheet: "sheet1" });
+    return dl ?
+        XLSX.write(wb, { bookType: type, bookSST: true, type: 'base64' }) :
+        XLSX.writeFile(wb, fn || ('MySheetName.' + (type || 'xlsx')));
+}
+
+
+
+
+</script>
+
+{{>adminFooter}}

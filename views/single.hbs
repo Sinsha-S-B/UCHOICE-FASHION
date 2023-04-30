@@ -1,0 +1,161 @@
+
+{{>userHeader}}
+	<div class="hamburger_menu">
+		<div class="hamburger_close"><i class="fa fa-times" aria-hidden="true"></i></div>
+		<div class="hamburger_menu_content text-right">
+			<ul class="menu_top_nav">
+				<li class="menu_item has-children">
+					<a href="#">
+						usd
+						<i class="fa fa-angle-down"></i>
+					</a>
+					<ul class="menu_selection">
+						<li><a href="#">cad</a></li>
+						<li><a href="#">aud</a></li>
+						<li><a href="#">eur</a></li>
+						<li><a href="#">gbp</a></li>
+					</ul>
+				</li>
+				<li class="menu_item has-children">
+					<a href="#">
+						English
+						<i class="fa fa-angle-down"></i>
+					</a>
+					<ul class="menu_selection">
+						<li><a href="#">French</a></li>
+						<li><a href="#">Italian</a></li>
+						<li><a href="#">German</a></li>
+						<li><a href="#">Spanish</a></li>
+					</ul>
+				</li>
+				<li class="menu_item has-children">
+					<a href="#">
+						My Account
+						<i class="fa fa-angle-down"></i>
+					</a>
+					<ul class="menu_selection">
+						<li><a href="#"><i class="fa fa-sign-in" aria-hidden="true"></i>Sign In</a></li>
+						<li><a href="#"><i class="fa fa-user-plus" aria-hidden="true"></i>Register</a></li>
+					</ul>
+				</li>
+				<li class="menu_item"><a href="#">home</a></li>
+				<li class="menu_item"><a href="#">shop</a></li>
+				<li class="menu_item"><a href="#">promotion</a></li>
+				<li class="menu_item"><a href="#">pages</a></li>
+				<li class="menu_item"><a href="#">blog</a></li>
+				<li class="menu_item"><a href="#">contact</a></li>
+			</ul>
+		</div>
+	</div>
+
+	<div class="container single_product_container">
+		<div class="row">
+			<div class="col">
+
+				<!-- Breadcrumbs -->
+
+				<div class="breadcrumbs d-flex flex-row align-items-center">
+					<ul>
+						<li><a href="home">Home</a></li>
+						<li><a href="categories.html"><i class="fa fa-angle-right" aria-hidden="true"></i>Women's</a></li>
+						<li class="active"><a href="#"><i class="fa fa-angle-right" aria-hidden="true"></i>Single Product</a></li>
+					</ul>
+				</div>
+
+			</div>
+		</div>
+		<div class="row">
+				
+
+			<div class="col-lg-7">
+				<div class="single_product_pics">
+					<div class="row mx-auto text-center">
+						<div class="col-lg-3 thumbnails_col order-lg-1 order-2">
+							<div class="single_product_thumbnails">
+								<ul>
+
+									{{#each productDetails.image}}
+									<li><img style="height: 9rem;" src="/images/productImages/{{[]}}.jpg" alt="" data-image="/images/productImages/{{[]}}.jpg"></li>
+									{{/each}}
+								</ul>
+							</div>
+						</div>
+						<div class="col-lg-9 image_col order-lg-2 order-1">
+							<div  class="single_product_image ee">
+								{{!-- <div id="zoom_01" class="zoom-container"> --}}
+								<div  class="zoom single_product_image_background" style="background-image: url('/images/productImages/{{productDetails.image.[0]}}.jpg'); background-position: top;">
+								<img class="image-width" src="/images/productImages/{{productDetails.image}}.jpg" alt="" ></div>
+							{{!-- </div> --}}
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-lg-5">
+				<div class="product_details">
+					<div class="product_details_title">
+						<h2>{{productDetails.title}}</h2>
+						<p>{{productDetails.description}}</p>
+					</div>
+					<div class="free_delivery d-flex flex-row align-items-center justify-content-center">
+						<span class="ti-truck"></span><a href="/addtoCart/{{productDetails._id}}" onclick="function3()"><span>Add To Cart</span></a>
+					</div>
+					
+					<div class="product_price">₹{{ productDetails.price}}</div>
+
+					
+				</div>
+				
+			</div>
+		</div>
+
+	</div>
+
+<style>
+	
+	
+.zoom {
+  padding: 50px;
+ 
+  transition: transform .2s; 
+  width: 25rem;
+  height: 28rem;
+  margin-bottom: 10rem;
+  margin-left: 4rem;
+  
+}
+
+.zoom:hover {
+	
+  transform: scale(1.4); 
+}
+.ee{
+	overflow: hidden;
+}
+</style>
+
+
+<script type="text/javascript">
+function function3() { 
+	swal("Success!", "Product added to cart!", "success");
+}
+
+</script>
+
+<script src="js/jquery-3.2.1.min.js"></script>
+<script src="styles/bootstrap4/popper.js"></script>
+<script src="styles/bootstrap4/bootstrap.min.js"></script>
+<script src="plugins/Isotope/isotope.pkgd.min.js"></script>
+<script src="plugins/OwlCarousel2-2.2.1/owl.carousel.js"></script>
+<script src="plugins/easing/easing.js"></script>
+<script src="plugins/jquery-ui-1.12.1.custom/jquery-ui.js"></script>
+<script src="js/single_custom.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" ></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js" ></script>
+
+
+
+{{>userFooter}}
+</body>
+
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <title>Edit Product</title>
+</head>
+<body>
+  {{>adminHeader}}
+  
+<div class="form control d-flex justify-content-center align-items-center flex-column">
+<h1>Edit Product</h1>
+<p style="color: red;">{{rmsg}}</p>
+  <div style="width: 30rem; height: 50rem;">
+    <form action="/admin/editProduct/{{edit._id}}" method="post" enctype="multipart/form-data">
+        <div class="form-floating mb-3">
+          <input type="text" class="form-control" id="floatingInput"   name="title" value="{{edit.title}}" >
+          <label for="floatingInput">Product Name</label>
+        </div>
+        <div class="form-floating mb-3">
+          <input type="text" class="form-control" id="floatingInput"  name="brand" value="{{edit.brand}}" >
+          <label for="floatingInput">Brand</label>
+        </div>
+
+        <div class="form-floating mb-3">
+          <input type="text" class="form-control" id="floatingInput"  name="price" value="{{edit.price}}" required>
+          <label for="floatingInput">Price</label>
+        </div>
+         <div class="form-floating mb-3">
+          <input type="text" class="form-control" id="floatingInput"   name="stocks" value="{{edit.stocks}}" required>
+          <label for="floatingInput">Stock</label>
+        </div>
+        <div class="form-floating mb-3">
+          <input type="text" class="form-control" id="floatingPassword"  name="description"  value=" {{edit.description}}" required>
+          <label for="floatingPassword">Description</label>
+        </div>
+        <div class="d-flex">
+          {{#each edit.image}}
+          <div class="d-block">
+            <div>
+            <img id="{{@index}}"  class="ms-2" src="/images/productImages/{{[]}}.jpg" alt="" width="130px">
+          </div>
+          <div>
+            <input type="file" name="{{[]}}" id="">
+          </div>
+          </div>
+           {{/each}}
+        </div><br>
+        <button class="btn btn-dark btn-lg btn-block" type="submit">Update</button>
+      </div>
+    </form>
+  </div>
+</div> 
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+</body>
+</html>

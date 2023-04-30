@@ -1,0 +1,75 @@
+{{>adminHeader}}
+
+
+
+
+<section class="container-fluid p-5">
+
+  <form action="/admin/editcoupon/{{couponDetails._id}}" method="post">
+    
+    <div class="row ">
+      <div class="col-md">
+        
+        <label for="">Coupon Code</label>
+        <div class="form-floating">
+          <input type="text" class="form-control" name="couponCode" id="floatingInputGrid" value="{{couponDetails.couponCode}}">
+        </div>
+      </div>
+      <div class="col-md">
+        <label>Discount Value</label>
+        <div class="form-floating">
+          <input type="number" class="form-control" name="discountPrice" id="floatingInputGrid" value="{{couponDetails.discountPrice}}">
+
+
+        </div>
+      </div>
+    </div>
+    <div class="row ">
+      <div class="col-md">
+        <label for="">Create Date</label>
+        <div class="form-floating">
+          <input type="date" class="form-control" name="createDate" id="floatingInputGrid" value="{{couponDetails.createDate}}">
+        </div>
+      </div>
+      <div class="col-md">
+        <label>Enter Minimum Purchase </label>
+        <div class="form-floating">
+          <input type="number" class="form-control" name="MinimumPrice" id="floatingInputGrid" value="{{couponDetails.MinimumPrice}}">
+
+
+        </div>
+      </div>
+    </div>
+    <div class="row ">
+      <div class="col-md">
+        <label for="">Expire Date</label>
+        <div class="form-floating">
+          <input type="date" class="form-control" name="expireDate" id="floatingInputGrid" value="{{couponDetails.expireDate}}">
+        </div>
+      </div>
+      <div class="col-md">
+        <label for="">Discount Type</label>
+        <div class="form-floating">
+          <input type="text" class="form-control" name="discountType" id="floatingInputGrid" value="{{couponDetails.discountType}}">
+        </div>
+      </div>
+    </div>
+
+
+    <br>
+
+    <button type="submit" class="btn btn-dark " onclick="function4()">Update</button>
+    <p class="text-danger">{{couponerr}}</p>
+    
+  </form>
+</section>
+<script type="text/javascript">
+function function4() { 
+	swal("Success!", "Coupon Updated!", "success");
+}
+
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" ></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js" ></script>
+
+{{>adminFooter}}

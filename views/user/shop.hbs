@@ -1,0 +1,211 @@
+
+		{{>userHeader}}
+
+		<div class="fs_menu_overlay"></div>
+
+		<!-- Hamburger Menu -->
+
+		<div class="hamburger_menu">
+			<div class="hamburger_close"><i class="fa fa-times" aria-hidden="true"></i></div>
+			<div class="hamburger_menu_content text-right">
+				<ul class="menu_top_nav">
+					<li class="menu_item has-children">
+						<a href="#">
+							usd
+							<i class="fa fa-angle-down"></i>
+						</a>
+						<ul class="menu_selection">
+							<li><a href="#">cad</a></li>
+							<li><a href="#">aud</a></li>
+							<li><a href="#">eur</a></li>
+							<li><a href="#">gbp</a></li>
+						</ul>
+					</li>
+					<li class="menu_item has-children">
+						<a href="#">
+							English
+							<i class="fa fa-angle-down"></i>
+						</a>
+						<ul class="menu_selection">
+							<li><a href="#">French</a></li>
+							<li><a href="#">Italian</a></li>
+							<li><a href="#">German</a></li>
+							<li><a href="#">Spanish</a></li>
+						</ul>
+					</li>
+					<li class="menu_item has-children">
+						<a href="#">
+							My Account
+							<i class="fa fa-angle-down"></i>
+						</a>
+						<ul class="menu_selection">
+							<li><a href="#"><i class="fa fa-sign-in" aria-hidden="true"></i>Sign In</a></li>
+							<li><a href="#"><i class="fa fa-user-plus" aria-hidden="true"></i>Register</a></li>
+						</ul>
+					</li>
+					<li class="menu_item"><a href="#">home</a></li>
+					<li class="menu_item"><a href="#">shop</a></li>
+					<li class="menu_item"><a href="#">promotion</a></li>
+					<li class="menu_item"><a href="#">pages</a></li>
+					<li class="menu_item"><a href="#">blog</a></li>
+					<li class="menu_item"><a href="#">contact</a></li>
+				</ul>
+			</div>
+		</div>
+
+		<div class="container product_section_container">
+			<div class="row">
+				<div class="col product_section clearfix">
+
+					<!-- Breadcrumbs -->
+
+					<div class="breadcrumbs d-flex flex-row align-items-center">
+						<ul>
+							<li><a href="index.html"></a></li>
+							<li class="active"><a href="index.html"><i class=""
+										aria-hidden="true"></i></a></li>
+						</ul>
+					</div>
+
+					<!-- Sidebar -->
+
+					<div class="sidebar">
+						<div class="sidebar_section">
+							<div class="sidebar_title">
+								<h5>Product Category</h5>
+							</div>
+							<ul class="sidebar_categories">
+								<li><a href="/shop">All Products</a></li>
+								{{#each categoryData}}
+								<li><a id="{{category}}" href="?category={{category}}">{{category}}</a></li>
+								{{/each}}
+								{{!-- onclick="getcategories(this.id)" --}}
+
+							</ul>
+						</div>
+
+						<!-- Price Range Filtering -->
+						<div class="sidebar_section">
+							<div class="sidebar_title">
+								<h5>Filter by Price</h5>
+							</div>
+							<p>
+								<input type="text" id="amount" readonly
+									style="border:0; color:#f6931f; font-weight:bold;">
+							</p>
+							<div id="slider-range"></div>
+							<div class="filter_button"><span>filter</span></div>
+						</div>
+
+						<!-- Sizes -->
+						<div class="sidebar_section">
+							<div class="sidebar_title">
+								<h5>Sizes</h5>
+							</div>
+							<ul class="checkboxes">
+								<li><i class="fa fa-square-o" aria-hidden="true"></i><span>S</span></li>
+								<li class="active"><i class="fa fa-square" aria-hidden="true"></i><span>M</span></li>
+								<li><i class="fa fa-square-o" aria-hidden="true"></i><span>L</span></li>
+								<li><i class="fa fa-square-o" aria-hidden="true"></i><span>XL</span></li>
+								<li><i class="fa fa-square-o" aria-hidden="true"></i><span>XXL</span></li>
+							</ul>
+						</div>
+
+						<!-- Color -->
+						<div class="sidebar_section">
+							<div class="sidebar_title">
+								<h5>Color</h5>
+							</div>
+							<ul class="checkboxes">
+								<li><i class="fa fa-square-o" aria-hidden="true"></i><span>Black</span></li>
+								<li class="active"><i class="fa fa-square" aria-hidden="true"></i><span>Pink</span></li>
+								<li><i class="fa fa-square-o" aria-hidden="true"></i><span>White</span></li>
+								<li><i class="fa fa-square-o" aria-hidden="true"></i><span>Blue</span></li>
+								<li><i class="fa fa-square-o" aria-hidden="true"></i><span>Orange</span></li>
+								<li><i class="fa fa-square-o" aria-hidden="true"></i><span>White</span></li>
+								<li><i class="fa fa-square-o" aria-hidden="true"></i><span>Blue</span></li>
+								<li><i class="fa fa-square-o" aria-hidden="true"></i><span>Orange</span></li>
+								<li><i class="fa fa-square-o" aria-hidden="true"></i><span>White</span></li>
+								<li><i class="fa fa-square-o" aria-hidden="true"></i><span>Blue</span></li>
+								<li><i class="fa fa-square-o" aria-hidden="true"></i><span>Orange</span></li>
+							</ul>
+							<div class="show_more">
+								<span><span>+</span>Show More</span>
+							</div>
+						</div>
+
+					</div>
+					
+
+					<!-- Main Content -->
+
+					<div class="main_content">
+
+
+						<!-- Products -->
+
+						<div class="products_iso">
+							<div class="row">
+								<div class="col">
+
+									<!-- Product Sorting -->
+									<!-- Product Grid -->
+
+									<div class="product-grid row">
+
+										<!-- Product 1 -->
+										{{#each products}}
+										<div class="product-item men col-md-4">
+											<div class="product discount product_filter">
+												<div class="product_image">
+													<img style="width: 13rem;height:16rem"
+														src="images/productImages/{{image.[0]}}.jpg" alt="">
+												</div>
+												<div class="favorite favorite_left"></div>
+												{{!-- <div
+													class="product_bubble product_bubble_right product_bubble_red d-flex flex-column align-items-center">
+													<span>-₹20</span></div> --}}
+												<div class="product_info">
+													<h6 class="product_name"><a href="/singleImage/{{_id}}">{{this.title}}</a></h6>
+													 <span class="product_price" style="text-decoration: line-through;">₹{{this.originalPrice}}</span>  <span class="product_price">₹{{this.price}}</span>
+												</div>
+											</div>
+											{{!-- <div style="right: 1rem;" class="red_button add_to_cart_button">
+											<a href="/addtoCart/{{_id}}" onclick="showToast(successMessage)">add to cart</a>
+											</div> --}}
+											{{!-- <div id="toastBox"></div> --}}
+
+										</div>
+
+										
+										{{/each}}
+										{{!-- <script>
+
+											let toastBox=document.getElementById('toastBox')
+											let successMessage='<i class="fa-solid fa-badge-check"></i>item added to the cart'
+											function showToast(msg){
+												let toast=document.createElement('div')
+												toast.classList.add('toast')
+												toast.innerHTML=msg
+												toastBox.appendChild(toast)
+
+												setTimeout(()=>{
+													toast.remove()
+												},6000)
+											}
+											console.log(toastBox)
+										</script> --}}
+
+										
+										
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		                         
+		
+		{{>userFooter}}
+

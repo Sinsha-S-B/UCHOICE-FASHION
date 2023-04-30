@@ -1,0 +1,292 @@
+{{>userHeader}}<br><br><br><br><br><br><br>
+
+
+
+
+<div class="offset-md-8 col form-group  ">
+	<form action="/couponApply " method="post">
+		<div class="d-flex">
+			<input class="form-control me-2" style="width:14vw;" type="text" id="couponcode" name="couponcode" value="">
+
+			<button type="submit" class="btn btn-dark ">APPLY COUPON </button>
+		</div>
+		<p style="color: red;">{{coponerr}}{{coponErr}}</p>
+	</form>
+	
+	<button style="color: crimson;" class="ml-3" type="button" class="" data-toggle="modal"
+		data-target="#exampleModalCenter">
+		CLICK HERE TO GET OFFERS
+	</button>
+
+</div> 
+
+
+<div class="container-fluid ">
+	<form id="checkout-form" method="post" name="submission">
+
+		<div class="row px-xl-5">
+
+			<div class="col-lg-8">
+
+				{{!-- <h4 class="font-weight-semi-bold mb-4">Billing Address</h4> --}}
+				<div class="col-md-12 form-group">
+					<div class="custom-control custom-checkbox ">
+						<input type="checkbox" class="custom-control-input" id="newaccount">
+						<a href="/addressbook" type="submit ">Select Address</a>
+					</div>
+
+				</div>
+				<div class="row">
+					<div class="col-md-6 form-group">
+						<label>First Name</label>
+						<input class="form-control" type="text" id="Firstname" name="Firstname"
+							value="{{adp.firstname}}">
+					</div>
+					<div class="col-md-6 form-group">
+						<label>Last Name</label>
+						<input class="form-control" type="text" id="Lastname" name="Lastname" value="{{adp.lastname}}">
+					</div>
+					<div class="col-md-6 form-group">
+						<label>E-mail</label>
+						<input class="form-control" type="text" id="Email" name="Email" value="{{adp.email}}">
+					</div>
+					<div class="col-md-6 form-group">
+						<label>Mobile No</label>
+						<input class="form-control" type="text" id="Mobilenumber" name="Mobilenumber"
+							value="{{adp.phone}}">
+					</div>
+					<div class="col-md-6 form-group">
+						<label>Street</label>
+						<input class="form-control" type="text" id="Address" name="Address" value="{{adp.town}}">
+					</div>
+					<div class="col-md-6 form-group">
+						<label>Post code</label>
+						<input class="form-control" type="number" id="Postcode" name="Postcode" value="{{adp.zip}}">
+					</div>
+
+					<div class="col-md-6 form-group">
+						<label>State</label>
+						<input class="form-control" type="text" id="State" name="State" value="{{adp.state}}">
+					</div>
+					<div class="col-md-6 form-group">
+						<label>City</label>
+						<input class="form-control" type="text" id="City" name="City" value="{{adp.street}}">
+					</div>
+					<div class="col-md-6 form-group">
+						<input type="text" name="userId" id="" value="{{userId}}" hidden>
+					</div>
+					<div class="col-md-12 form-group">
+						<div class="custom-control custom-checkbox">
+							<input type="checkbox" class="custom-control-input" id="shipto">
+							<label class="custom-control-label" for="shipto" data-toggle="collapse"
+								data-target="#shipping-address"></label>
+						</div>
+					</div>
+				</div>
+			</div>
+
+
+
+			<div class="col-lg-4">
+				<div class="card border-secondary mb-5">
+					<div class="card-header bg-secondary border-10">
+						<h4 class="font-weight-semi-bold m-0 text-white">Total</h4>
+					</div>
+					<div class="card-footer border-secondary bg-transparent">
+						<div class="d-flex justify-content-between ">
+							<h5 class="font-weight-bold">Cart Total</h5>
+							<h5 class="font-weight-bold">₹ {{total}}</h5>
+						</div>
+						
+					</div>
+				</div>
+
+				<!-- Modal -->
+
+
+				 <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
+					aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+					<div class="modal-dialog modal-dialog-centered" role="document">
+						<div class="modal-content">
+							<div class="modal-header">
+                               
+								<h5 class="modal-title" id="exampleModalLongTitle">AVAILABLE COUPONS</h5>
+								<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+									<span aria-hidden="true">&times;</span>
+								</button>
+								
+							</div>
+							
+							 {{#each couponData}}
+		<div class="col-sm-12">
+		    <div class="coupon bg-white rounded mb-3 d-flex justify-content-between">
+                <div class="kiri p-3">
+                    <div class="icon-container ">
+                        <div class="icon-container_box">
+                            
+                        </div>
+                    </div>
+                </div>
+                <div class="tengah py-3 d-flex w-100 justify-content-start">
+                    <div>
+                        <span class="badge badge-success">Valid</span>
+                        <h3 class="lead" id="couponcode" >{{couponCode}} </h3>
+                        <p class="text-dark mb-0">Minimum Purchase Rs.{{MinimumPrice}}</p>
+                    </div>
+                </div>
+                <div class="kanan">
+                    <div class="info m-3 d-flex align-items-center">
+                        <div class="w-100">
+                            <div class="block">
+                                <span class="time font-weight-light">
+                                    <span>{{discountPrice}} off</span>
+                                </span>
+                            </div>
+                            <a id="{{couponCode}}" onclick="copy('{{couponCode}}')" target="_blank" class="btn btn-sm btn-outline-danger btn-block">
+                                copy code
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+		</div>
+		 {{/each}}
+
+							
+						</div>
+					</div>
+				</div> 
+				<div class="card border-secondary mb-5">
+					<div class="card-header bg-secondary border-0">
+						<h4 class="font-weight-semi-bold m-0 text-white">Payment Method</h4>
+					</div>
+					<div class="card-body">
+						<div class="form-group">
+							<div class="form-check">
+								<input class="form-check-input" type="radio" name="payment-method" id="flexRadioDefault1" value="COD">
+								<label class="form-check-label" for="flexRadioDefault1">
+									Cash On Delivery
+								</label>
+							</div>
+							{{!-- <div class="custom-control custom-radio"> --}}
+								
+								{{!-- <div class=""> --}}
+									{{!-- <input type="radio" name="payment-method" value="COD"> --}}
+								{{!-- <labe class="ms-2 ">Cash On Delivery</label> --}}
+								</div>
+							{{!-- </div> --}}
+
+							<div class="form-group">
+								<div class="form-check">
+								<input class="form-check-input" type="radio" name="payment-method" id="flexRadioDefault1" value="ONLINE">
+								<label class="form-check-label" for="flexRadioDefault1">
+									Online Payment
+								</label>
+							{{!-- </div> --}}
+								{{!-- <div class="custom-control custom-radio"> --}}
+									{{!-- <input type="radio" name="payment-method" value="ONLINE"> --}}
+									{{!-- <labe class="ms-2 ">Online Payment</label> --}}
+								{{!-- </div> --}}
+							{{!-- </div> --}}
+						</div>
+						<a href="/success"><button class="btn btn-dark btn-lg btn-block" type="submit">Place
+								Order</button></a>
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</form>
+</div>
+{{>userFooter}}
+
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+
+<script>
+	$("#checkout-form").submit((e) => {
+		e.preventDefault()
+		$.ajax({
+			url: '/placeorder',
+			method: 'post',
+			data: $('#checkout-form').serialize(),
+			success: (response) => {
+
+
+				if (response?.codSuccess) {
+					location.href = '/success'
+				} else {
+					razorpayPayment(response)
+
+				}
+			}
+
+		})
+	})
+	function razorpayPayment(order) {
+		var options = {
+			"key": "rzp_test_pHGmqFqhhEx8T8", // Enter the Key ID generated from the Dashboard
+			"amount": order.amount, // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
+			"currency": "INR",
+			"name": "UCHOICE FASHION",
+			"description": "Test Transaction",
+			"image": "https://example.com/your_logo",
+			"order_id": order.id, //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
+			"handler": function (response) {
+
+
+				verifyPayment(response, order)
+			},
+			"prefill": {
+				"name": "Gaurav Kumar",
+				"email": "gaurav.kumar@example.com",
+				"contact": "9000090000"
+			},
+			"notes": {
+				"address": "Razorpay Corporate Office"
+			},
+			"theme": {
+				"color": "#3399cc"
+			}
+		}; var rzp1 = new Razorpay(options);
+
+		rzp1.open();
+
+
+		function verifyPayment(payment, order) {
+			$.ajax({
+				url: '/verify-payment',
+				data: {
+					payment,
+					order
+				},
+				method: 'post',
+				success: (response) => {
+					if(response.status == true){
+						location.href = '/success'
+					}
+					else{
+						alert("Your payment is failed")
+					}
+					
+				}
+			})
+		}
+
+	}
+
+	function copy(code){
+		navigator.clipboard.writeText(code);
+		document.getElementById(code).innerHTML="Copied"
+	}
+</script>
+
+<style>
+	.coupon .kanan {
+    border-left: 1px dashed #ddd;
+    width: 40% !important;
+    position:relative;
+}
+.coupon .time {
+    font-size: 1.6rem;
+}
+</style>
