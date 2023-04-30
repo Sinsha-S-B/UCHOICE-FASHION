@@ -1,5 +1,6 @@
 const mongoose=require("mongoose")
 
+require('../config/connection')
 const cartDetails = mongoose.Schema({
     userId:{
         type:String,

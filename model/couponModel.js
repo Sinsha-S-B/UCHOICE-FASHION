@@ -1,5 +1,5 @@
 const mongoose=require("mongoose")
-
+require('../config/connection')
 const couponDetails=new mongoose.Schema({
 
     couponCode:{

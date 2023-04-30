@@ -1,5 +1,5 @@
 const mongoose=require("mongoose")
-
+require('../config/connection')
 
 const userData=new mongoose.Schema({
     name:{

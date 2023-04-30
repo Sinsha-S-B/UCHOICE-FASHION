@@ -1,5 +1,5 @@
 const mongoose=require("mongoose")
-
+require('../config/connection')
 const productDetails=new mongoose.Schema({
     title:{
         type:String,

@@ -1,5 +1,5 @@
 const mongoose=require("mongoose")
-
+require('../config/connection')
 const categoryDetails=new mongoose.Schema({
 
     category:{
