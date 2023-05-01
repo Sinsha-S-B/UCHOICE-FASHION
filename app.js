@@ -48,7 +48,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 // app.use(fileupload())
-app.use(fileupload({useTempFiles:true,tempFileDir:'/temp/'}))
+app.use(fileupload({useTempFiles:true,tempFileDir:'./public/images/temp'}))
 
 
 
