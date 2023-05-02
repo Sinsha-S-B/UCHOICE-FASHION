@@ -256,7 +256,7 @@ let salesReport=async(req,res)=>{
 
 let reportSales=async(req,res)=>{
   try {
-    console.log('dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd');
+    
     salesParam = req.query.name
     console.log(salesParam);
     if (salesParam == "day") {

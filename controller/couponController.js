@@ -102,7 +102,9 @@ let applyCoupon = async (req, res) => {
     if (exist) {
      
 let usedCouponCheck = await user.find({ name: username }).toArray()
-let couponExists = usedCouponCheck[0].usedCoupon.includes(couponId) ? 1 : 0;
+let couponExists = usedCouponCheck[0].usedCoupon?.includes(couponId) ? 1 : 0;
+
+
 
     if (couponExists == 0) {      
      

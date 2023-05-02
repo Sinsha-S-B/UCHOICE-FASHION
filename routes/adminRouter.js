@@ -96,7 +96,8 @@ router.post('/editProOffer/:id',productController.productOfferEditPost);
 
 //category offer
 router.get('/categoryOffer',productController.categoryOfferManagement);
-router.get('/categoryOffer/:id',productController.catOfferEdit);
+router.get('/editcatOffer/:id',productController.catOfferEdit);
+router.post('/editcatOffer/:id',productController.catOfferEditPost);
 
 
 

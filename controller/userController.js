@@ -185,8 +185,9 @@ const insertUser = async (req,res)=>{
         }
         else {
           const referralId = crypto.createHash("shake256", { outputLength: 6 })
-          .update('bacon')
+          .update(req.body.email)
           .digest("hex");
+          console.log(referralId,'referralIddddddddddddddddddddddd');
           
             const userData={
                 name:req.body.name,
@@ -337,6 +338,7 @@ const profileUser=async(req,res)=>{
     console.log('rinsha',userId);
   
     let userCheck=await User.findOne({_id:new ObjectId(userId)})
+    console.log(userCheck,'userCheckkkkkkkkkkkkkkkkkkkkkkkkkkk');
 
     res.render('userProfile',{user,userCheck})
     

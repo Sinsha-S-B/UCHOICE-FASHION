@@ -24,137 +24,7 @@ const loadaddProducts = async (req, res) => {
   }
 };
 
-// const insertProducts = async (req, res) => {
-//   try {
-//     image = req.files?.image;
-//     productInfo = req.body;
-//     req.session.addpro = productInfo;
 
-//     var rmsg;
-//     var nameRegex = /^([A-Za-z0-9_ ]){3,20}$/i;
-//     var brandRegex = /^([A-Za-z0-9_ ]){3,20}$/i;
-//     var categoryRegex = /^([A-Za-z0-9_ ]){3,20}$/i;
-//     var subcategoryRegex = /^([A-Za-z0-9_ ]){3,20}$/i;
-//     var priceRegex = /^([0-9.]){1,}$/i;
-//     var paraRegex = /^(.|\s)*[a-zA-Z]+(.|\s)*$/;
-
-//     if (productInfo.title == "") {
-//       rmsg = "Product Name cannot be empty";
-//       req.session.msg = rmsg;
-//       res.redirect("/admin/addProducts");
-//     } else if (nameRegex.test(productInfo.title) != true) {
-//       rmsg = "Enter valid Product Name";
-//       req.session.msg = rmsg;
-//       res.redirect("/admin/addProducts");
-//     } else if (paraRegex.test(productInfo.brand) != true) {
-//       rmsg = "Brand cannot be empty";
-//       req.session.msg = rmsg;
-//       res.redirect("/admin/addProducts");
-//     } else if (brandRegex.test(productInfo.brand) != true) {
-//       rmsg = "enter valid Brand";
-//       req.session.msg = rmsg;
-//       res.redirect("/admin/addProducts");
-//     } else if (categoryRegex.test(productInfo.category) != true) {
-//       rmsg = "Category cannot be empty";
-//       req.session.msg = rmsg;
-//       res.redirect("/admin/addProducts");
-//     } else if (categoryRegex.test(productInfo.category) != true) {
-//       rmsg = "enter valid category";
-//       req.session.msg = rmsg;
-//       res.redirect("/admin/addProducts");
-//     }
-//     // } else if (subcategoryRegex.test(productInfo.subcategory) != true) {
-//     //   rmsg = "Subcategory cannot be empty";
-//     //   req.session.msg = rmsg;
-//     //   res.redirect("/admin/addProducts");
-//     // } else if (subcategoryRegex.test(productInfo.subcategory) != true) {
-//     //   rmsg = "enter valid subcategory";
-//     //   req.session.msg = rmsg;
-//     //   res.redirect("/admin/addProducts");
-//     // }
-//     else if (productInfo.price == "") {
-//       rmsg = "price cannot be empty";
-//       req.session.msg = rmsg;
-//       res.redirect("/admin/addProducts");
-//     } else if (priceRegex.test(productInfo.price) != true) {
-//       rmsg = "enter valid price";
-//       req.session.msg = rmsg;
-//       res.redirect("/admin/addProducts");
-//     } else if (priceRegex.test(productInfo.stocks) != true) {
-//       rmsg = "enter valid product stock";
-//       req.session.msg = rmsg;
-//       res.redirect("/admin/addProducts");
-//     } else if (productInfo.stock == "") {
-//       rmsg = "stock cannot be empty";
-//       req.session.msg = rmsg;
-//       res.redirect("/admin/addProducts");
-//     } else if (paraRegex.test(productInfo.description) != true) {
-//       rmsg = "enter valid description";
-//       req.session.msg = rmsg;
-//       res.redirect("/admin/addProducts");
-//     } else if (productInfo.description == "") {
-//       rmsg = "description cannot be empty";
-//       req.session.msg = rmsg;
-//       res.redirect("/admin/addProducts");
-//     } else if (!image) {
-//       rmsg = "Add minimum 1 image";
-//       req.session.msg = rmsg;
-//       res.redirect("/admin/addProducts");
-//     } else if (image.length > 3) {
-//       rmsg = "Add maximum 3 images";
-//       req.session.msg = rmsg;
-//       res.redirect("/admin/addProducts");
-//     } else {
-//       count = image.length;
-//       imgId = [];
-//       if (count) {
-//         for (i = 0; i < count; i++) {
-//           imgId[i] = uuid.v4();
-//           image[i].mv(
-//             "./public/images/productImages/" + imgId[i] + ".jpg",
-//             (err, done) => {
-//               if (err) {
-//                 console.log(err);
-//               } else {
-//                 console.log("done");
-//               }
-//             }
-//           );
-//         }
-//       } else {
-//         imgId[0] = uuid.v4();
-//         image.mv(
-//           "./public/images/productImages/" + imgId[0] + ".jpg",
-//           (err, done) => {
-//             if (err) {
-//               console.log(err);
-//             } else {
-//               console.log("done");
-//             }
-//           }
-//         );
-//       }
-//       productInfo.price = parseInt(productInfo.price);
-//       productInfo.stock = parseInt(productInfo.stock);
-//       productInfo.image = imgId;
-//       const productData = {
-//         title: productInfo.title,
-//         brand: productInfo.brand,
-//         category: productInfo.category,
-//         // subcategory: productInfo.subcategory,
-//         price: productInfo.price,
-//         stocks: productInfo.stocks,
-//         description: productInfo.description,
-//         image: productInfo.image,
-//       };
-//       await product.insertMany([productData]);
-//       req.session.product = req.body;
-//       res.redirect("/admin/products");
-//     }
-//   } catch (error) {
-//     console.log(error.message);
-//   }
-// };
 
 const insertProducts = async (req, res) => {
   try {
@@ -650,7 +520,7 @@ const categoryOfferManagement=async(req,res)=>{
 
   try {
     const catoffer = await category.find().toArray()
-    console.log(catoffer,'catofferrrrrrrrrrrrrrrrr');
+    // console.log(catoffer,'catofferrrrrrrrrrrrrrrrr');
 
     res.render('admin/categoryManagement',{catoffer})
     
@@ -662,18 +532,33 @@ const categoryOfferManagement=async(req,res)=>{
 
 const catOfferEdit=async(req,res)=>{
   try {
-    console.log('sssssssssssssssssssssssssssssssssssssss');
-    const offers=await category.findOne({_id:new ObjectId(req.params.id)})
-    console.log(offers,'offersssssssssss')
-        
+  
+    const offers=await category.findOne({_id:new ObjectId(req.params.id)})    
      res.render('admin/catOfferEdit',{offers})
   } catch (error) {
       
   }
 }
 
+const catOfferEditPost=async(req,res)=>{
+  try {
+      const categories=await category.findOne({_id:new ObjectId(req.params.id)})
+      console.log(categories,'categoriesssssssssssssssssssssss');
+      console.log(req.body,'bodyyyyyyyyyyyyyyyyyyyyyyyyyyyyy');
+      console.log(req.params,'paramsssssssssssssssssssssssssss');
 
-
+      await category.updateOne({_id:new ObjectId(req.params.id)},{$set:{discount:req.body.Discountprice}})
+      const products=await product.find({category:req.body.category})
+      products.forEach(async (data)=>{
+          const productId=data._id
+          const price=data.price - (data.price*req.body.discount/100)
+          await product.updateOne({_id:productId},{$set:{price:price}})
+      })
+      res.redirect('/admin/categoryOffer')
+  } catch (error) {
+      console.log(error)
+  }
+}
 
 module.exports = {
   loadaddProducts,
@@ -695,5 +580,6 @@ module.exports = {
   productOfferEdit,
   productOfferEditPost,
   categoryOfferManagement,
-  catOfferEdit
+  catOfferEdit,
+  catOfferEditPost
 };
